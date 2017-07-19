@@ -1,0 +1,27 @@
+info:
+  component: Zuul Server
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+zuul:
+  ignoredServices: "*"
+  routes:
+    wallet-service:
+      path: /policywallet/server/wallets/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: wallet-service
+      stripPrefix: false
+
+server:
+  port: 8765
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG

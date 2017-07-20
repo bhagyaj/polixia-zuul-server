@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class PolixiaZuulGatewayMain {
-    private static Logger log = LoggerFactory.getLogger(PolixiaZuulGatewayMain.class);
+    static Logger log = LoggerFactory.getLogger(PolixiaZuulGatewayMain.class);
     public static void main(String[] args) {
         SpringApplication.run(PolixiaZuulGatewayMain.class, args);
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-
+        if(request!=null)
         log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
     }
 }
